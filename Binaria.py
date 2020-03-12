@@ -74,48 +74,6 @@ class tree:
 			print ("email:", atual.email)
 			print ("Telefone:", atual.telefone)
 			print ("-------------------------------------------")
-
- 	
-
-	def buscaDesempenho (self, quantidade): #Busca com desempenho
-		arquivo = open ('MetricasBinaria.txt', 'w')
-		numero = lista_arqs[0].split(".")
-		primeiro = int(numero[0])
-		total = primeiro + quantidade
-		listaMatricula=[]
-		for i in range(quantidade):
-			Matricula_Aluno = randint(primeiro, total)
-			listaMatricula.append(Matricula_Aluno)
-		for c in range(len(listaMatricula)):
-			start_time = time.time()
-			mat = listaMatricula[c]							
-			atual = self.root
-			while atual.matricula != mat:
-				if mat< atual.matricula:
-					atual=atual.esquerda
-				else:
-					atual = atual.direita
-				if atual == None:
-					return None
-			end_time= time.time()
-			print ("----------- Aluno encontrado --------------")
-			print ("Matricula:", atual.matricula)
-			print ("Nome:", atual.nome)
-			print ("curso:", atual.curso)
-			print ("email:", atual.email)
-			print ("Telefone:", atual.telefone)
-			print ("-------------------------------------------")
-
-			print("Desvio padrão:" , statistics.pstdev(listaMatricula))
-			print("Variancia:", statistics.variance(listaMatricula))
-			print("Tempo Médio da Busca:",  end_time - start_time )
-			DP = ("Desvio padrão: %i \n" % statistics.pstdev(listaMatricula))
-			var = ("Variancia: %i \n " % statistics.variance(listaMatricula))
-			tempMedio = ("Tempo: %i \n" % (end_time - start_time) )
-		print ("tempo total:", end_time - start_time)
-		total = ("tempo total:%i \n" % (end_time - start_time))
-		arquivo.write(total)
-		arquivo.close()
 	
 
 	def busca2 (self, quantidade): #Busca semi aleatória
@@ -165,7 +123,6 @@ def main():
 		print(" --- 2: Pesquisar")
 		print(" --- 3: mostrar arvore")
 		print(" --- 4: Buscas PseudoAleatorias")
-		print(" --- 5: Vizualizar Desempenho da busca")
 		opcao = int(input("-> "))
 		if opcao == 1:
 			for i in range(len(lista_arqs)):
@@ -182,10 +139,6 @@ def main():
 			print("quantidade de buscas:")
 			quantidade = int(input("-> ")) 
 			arv.busca2(quantidade)
-		elif opcao == 5:
-			print("quantidade de buscas:")
-			quantidade = int(input("-> ")) 
-			arv.buscaDesempenho(quantidade)
 
 if __name__ == "__main__":
 	main()
